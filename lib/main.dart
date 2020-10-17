@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:katching_app/JobPage.dart';
+import 'package:katching_app/LandingPage.dart';
+import 'package:katching_app/SlideTransition.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LandingPage(),
     );
   }
 }
@@ -103,6 +106,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            RaisedButton(
+                child:Text("next"),
+                onPressed: () {
+                  Navigator.push(context,
+                      SlideRightRoute(page:JobPage()));
+                }
             ),
           ],
         ),
