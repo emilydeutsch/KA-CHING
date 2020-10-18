@@ -74,8 +74,12 @@ class _JobPageState extends State<JobPage> {
           //     }).toList(),
           //   ),
           // ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Select a Job'),
+              ),
               Container(
-                height: 300,
+                height: 250,
                 child: ListView(
                   padding: const EdgeInsets.all(8),
                   children: <Widget>[
