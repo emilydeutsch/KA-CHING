@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
                     color: Color.fromRGBO(255, 210, 63, 1.0),
                     child:Padding(
                       padding: const EdgeInsets.fromLTRB(30.0,8.0,30.0,8.0),
-                      child: Text("Start", style: TextStyle(fontSize: 30)),
+                      child: Text("Start", style: TextStyle(fontSize: 30, fontFamily: 'QuickSand',fontWeight: FontWeight.bold),),
                     ),
                     onPressed: () {
                       Navigator.push(context,
