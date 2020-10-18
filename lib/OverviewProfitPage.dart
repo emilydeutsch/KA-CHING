@@ -83,7 +83,7 @@ class _OverviewProfitPageState extends State<OverviewProfitPage> {
                 child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:50.0),
+                        padding: const EdgeInsets.only(right:50.0),
                         child: Text(
                           'Review Your Profile!',
                           style: TextStyle(
