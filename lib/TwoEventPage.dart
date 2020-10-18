@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:katching_app/ThreeEventPage.dart';
 
+import 'LosePage.dart';
+
 class TwoEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
@@ -20,8 +22,16 @@ class _TwoEventPageState extends State<TwoEventPage> {
       int funScore = widget.funScore;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+      body:new Stack(
+          children: <Widget>[
+      Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+          image: AssetImage("lib/images/EventPageTwo.png"),
+      fit: BoxFit.cover,
+    ),
+    ),
+    ), Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -36,6 +46,8 @@ class _TwoEventPageState extends State<TwoEventPage> {
           ],
         )
       )
+    ],
+      ),
     );
   }
 }
@@ -111,14 +123,18 @@ class EventButton extends StatelessWidget{
         ),
         onPressed: (){
           //Event: lost wallet($200)
-          if(moneyScore > 0){
             moneyScore = moneyScore - 200;
-          }
-          
-          Navigator.push(
+            if(moneyScore<=0 || funScore<=0){
+              Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ThreeEventPage(moneyScore, funScore)));
-          ///TODO: add logic if lost        
+                  MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
+            }
+            else {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ThreeEventPage(moneyScore, funScore)));
+            }
         }
       )
         )
