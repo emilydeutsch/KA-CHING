@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:katching_app/EightEventPage.dart';
+import 'package:katching_app/LandingPage.dart';
 
 class SevenEventPage extends StatefulWidget {
   final int moneyScore;
@@ -19,6 +20,10 @@ class _SevenEventPageState extends State<SevenEventPage> {
       int moneyScore = widget.moneyScore;
       int funScore = widget.funScore;
 
+
+String description = "Happy birthday! It’s your birthday this week, and your grandma gave you some money as a gift.";
+String boldText = "You just got \$" + 200.toString() + ".";
+
     return Scaffold(
            body: new Stack(
           children: <Widget>[
@@ -31,16 +36,51 @@ class _SevenEventPageState extends State<SevenEventPage> {
     ),
     ),Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 45
+              height: 50
             ),
             StatusBar(moneyScore, funScore),
             SizedBox(
               height: 350
+            ),Container(
+              width: 300,
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontSize: 18.0
+                )
+              )
             ),
-            EventButton(moneyScore, funScore)
+            Container(
+              width: 300,
+              child: Text(
+                boldText,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold
+                )
+              )
+            ),
+            SizedBox(
+              height: 20
+            ),
+            EventButton(moneyScore, funScore),
+             SizedBox(
+              height: 50
+            ),
+            Container(
+              child: InkWell(
+                child: Text("Quit"),
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LandingPage()));
+                },
+              )
+            )            
           ],
         )
       )
@@ -74,7 +114,7 @@ class StatusBar extends StatelessWidget{
             labelPadding: EdgeInsets.all(2.0),
           ),
         SizedBox(
-          height: 15.0
+          height: 5
         ),
         Chip(
             backgroundColor: Colors.orange,
@@ -107,10 +147,11 @@ class EventButton extends StatelessWidget{
           minWidth: 200,
         height: 50,
           child:FlatButton(
-        color: Colors.white,
+        color: Color(0xff41c8ab),
+        textColor: Colors.black,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          side: BorderSide(color: Colors.black)
+          borderRadius: BorderRadius.circular(25.0),
+          side: BorderSide(color: Color(0xff41c8ab))
         ),
         padding: EdgeInsets.all(8.0),
         child: Text(
