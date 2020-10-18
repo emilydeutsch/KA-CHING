@@ -17,6 +17,8 @@ _SalaryAdditionPageTwoState createState() => _SalaryAdditionPageTwoState();
 class _SalaryAdditionPageTwoState extends State<SalaryAdditionPageTwo> {
   @override
   Widget build(BuildContext context) {
+    int moneyScore = widget.moneyScore;
+    int funScore = widget.funScore;
     return Scaffold(
       body:new Stack(
         children: <Widget>[
@@ -32,12 +34,25 @@ class _SalaryAdditionPageTwoState extends State<SalaryAdditionPageTwo> {
             child: Column(
               //mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                SizedBox(
+                    height: 50
+                ),
+                StatusBar2(moneyScore, funScore),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 520.0, 0.0, 0.0),
-                  child: Text("Payday! \n"+ widget.salary.toString()+ "Added",style: TextStyle(
+                  padding: const EdgeInsets.fromLTRB(0.0, 170.0, 0.0, 0.0),
+                  child: Text("\$"+widget.salary.toString(),style: TextStyle(
+                      fontFamily: 'QuickSand',
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50.0, 160.0, 50.0, 0.0),
+                  child: Text("PAYDAY!",style: TextStyle(
                       fontFamily: 'QuickSand',
                       color: Colors.black87,
-                      fontSize: 30,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -63,6 +78,90 @@ class _SalaryAdditionPageTwoState extends State<SalaryAdditionPageTwo> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class FunProgress extends StatelessWidget {
+
+  FunProgress(this.funscore);
+  double funscore;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Text(
+              "Fun",
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                color: Colors.black87,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),),
+          ),
+          SizedBox(
+            width: 100,
+            child: LinearProgressIndicator(
+              value: funscore,
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.amber),
+              backgroundColor: Colors.amberAccent[100],
+              minHeight: 8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class StatusBar2 extends StatelessWidget{
+
+  StatusBar2(this.moneyScore, this.funScore);
+
+  final int moneyScore;
+  final int funScore;
+
+
+
+  @override
+  Widget build(BuildContext context){
+    return Center(
+      child: (
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Container(child: Text(
+                      '\$ ' + moneyScore.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.black87,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(child: FunProgress(this.funScore/100.00)),
+                    ),
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ),
+              ]
+          )
       ),
     );
   }

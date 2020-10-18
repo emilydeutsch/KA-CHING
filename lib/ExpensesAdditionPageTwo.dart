@@ -17,6 +17,8 @@ class ExpensesAdditionPageTwo extends StatefulWidget {
 class _ExpensesAdditionPageTwoState extends State<ExpensesAdditionPageTwo> {
   @override
   Widget build(BuildContext context) {
+    int moneyScore = widget.moneyScore;
+    int funScore = widget.funScore;
     return Scaffold(
       body:new Stack(
         children: <Widget>[
@@ -32,12 +34,25 @@ class _ExpensesAdditionPageTwoState extends State<ExpensesAdditionPageTwo> {
             child: Column(
               //mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                SizedBox(
+                    height: 50
+                ),
+                StatusBar2(moneyScore, funScore),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 520.0, 0.0, 0.0),
-                  child: Text("Monthly Expenses Due\n Pay"+widget.expenses.toString(),style: TextStyle(
+                  padding: const EdgeInsets.fromLTRB(0.0, 170.0, 0.0, 0.0),
+                  child: Text("\$"+widget.expenses.toString(),style: TextStyle(
+                      fontFamily: 'QuickSand',
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(55.0, 150.0, 55.0, 0.0),
+                  child: Text("Every month, you need to pay for rent, groceries, and other things",style: TextStyle(
                       fontFamily: 'QuickSand',
                       color: Colors.black87,
-                      fontSize: 30,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold),
                   ),
                 ),
