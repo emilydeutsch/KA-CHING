@@ -19,6 +19,7 @@ class _RentPageState extends State<RentPage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text("Rent"),
+          LivingArrangementsWidget(),
           RaisedButton(
               child:Text("next"),
               onPressed: () {
@@ -33,3 +34,70 @@ class _RentPageState extends State<RentPage> {
   }
 }
 
+class LivingArrangementsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+          //color: Colors.grey,
+          child: Center(
+            child: Column(
+                children: <Widget>[
+                  Center(
+                    heightFactor: 2,
+                    child:Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                      child: Text(
+                        'Choose your living arrangements',
+                        style: TextStyle(
+                          fontFamily: 'QuickSand',
+                          color: Colors.black87,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton.icon(
+                      onPressed: (){},
+                      icon: FlutterLogo(),
+                      label: Text(
+                        'One bedroom',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.lightBlue[900],
+                          fontSize: 17,
+                        ),
+                      ),
+                      style: raisedButtonStyle2,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton.icon(
+                      onPressed: (){},
+                      icon: FlutterLogo(),
+                      label: Text(
+                        'Two bedrooms',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.lightBlue[900],
+                          fontSize: 17,
+                        ),
+                      ),
+                      style: raisedButtonStyle2,
+                    ),
+                  )
+                ]
+            ),
+          )
+
+      ),
+    );
+  }
+}

@@ -55,8 +55,11 @@ class _CityPageState extends State<CityPage> {
           RaisedButton(
               child: Text("next"),
               onPressed: () {
-                Navigator.push(context,
-                    SlideRightRoute(page:MonthlyIncomePage(userSelection:widget.userSelection)));
+                if(dropdownValue != "Select a City") {
+                  Navigator.push(context,
+                      SlideRightRoute(page: MonthlyIncomePage(
+                          userSelection: widget.userSelection)));
+                }
               }
           ),
         ],

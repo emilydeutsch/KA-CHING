@@ -19,6 +19,7 @@ class _FoodPageState extends State<FoodPage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text("Food"),
+          FoodWidget(),
           RaisedButton(
               child:Text("next"),
               onPressed: () {
@@ -33,3 +34,88 @@ class _FoodPageState extends State<FoodPage> {
   }
 }
 
+final ButtonStyle raisedButtonStyle2 = ElevatedButton.styleFrom(
+  onPrimary: Colors.red,
+  primary: Colors.white,
+  minimumSize: Size(300, 80),
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(5),
+    side: BorderSide(),
+  ),
+);
+
+class FoodWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+          //color: Colors.grey,
+          child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:50.0),
+                  child: Text(
+                    'How much do you want to spend on food?',
+                    style: TextStyle(
+                      fontFamily: 'QuickSand',
+                      color: Colors.black87,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    child: Text(
+                      '\$',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.lightBlue[900],
+                        fontSize: 17,
+                      ),
+                    ),
+                    style: raisedButtonStyle2,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    child: Text(
+                      '\$\$',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.lightBlue[900],
+                        fontSize: 17,
+                      ),
+                    ),
+                    style: raisedButtonStyle2,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    child: Text(
+                      '\$\$\$',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.lightBlue[900],
+                        fontSize: 17,
+                      ),
+                    ),
+                    style: raisedButtonStyle2,
+                  ),
+                ),
+
+              ]
+          )
+
+      ),
+    );
+  }
+}
