@@ -39,7 +39,7 @@ class _OneEventPageState extends State<OneEventPage> {
         ),
       ),Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               height: 50
@@ -53,7 +53,7 @@ class _OneEventPageState extends State<OneEventPage> {
               child: Text(
                 description,
                 style: TextStyle(
-                  fontSize: 18.0
+                  fontSize: 18.0,
                 )
               )
             ),
@@ -68,7 +68,7 @@ class _OneEventPageState extends State<OneEventPage> {
               )
             ),
             SizedBox(
-              height: 20
+              height: 14
             ),
             ActionButtons(moneyScore, funScore,widget.salary,widget.expenses),
             SizedBox(
@@ -102,36 +102,39 @@ class StatusBar extends StatelessWidget{
   
   @override
   Widget build(BuildContext context){
-  return(
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-         Chip(
-            backgroundColor: Colors.lightGreen,
-            label: Text('Money Score: ' + moneyScore.toString()),
-            labelStyle: 
-              TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold
-              ),
-            labelPadding: EdgeInsets.all(2.0),
+  return Center(
+    child: (
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 20,
           ),
-        SizedBox(
-          height: 5
-        ),
-        Chip(
-            backgroundColor: Colors.orange,
-            label: Text('Fun Score: ' + funScore.toString()),
-            labelStyle: 
-              TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold
+          Row(
+            children: [
+              Container(child: Text(
+                  '\$ ' + moneyScore.toString(),
+                  style: TextStyle(
+                  fontFamily: 'Poppins',
+                  color: Colors.black87,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            labelPadding: EdgeInsets.all(2.0),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(child: FunProgress(this.funScore/100.00)),
+              ),
+            ],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+        ]
       )
-      ]
-    )
+    ),
   );
   }
 }
@@ -231,6 +234,42 @@ class ActionButtons extends StatelessWidget{
     )
     );
   }  
+}
+
+class FunProgress extends StatelessWidget {
+
+  FunProgress(this.funscore);
+  double funscore;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Text(
+              "Fun",
+              style: TextStyle(
+              fontFamily: 'Poppins',
+              color: Colors.black87,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),),
+          ),
+          SizedBox(
+            width: 100,
+            child: LinearProgressIndicator(
+              value: funscore,
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.amber),
+              backgroundColor: Colors.amberAccent[100],
+              minHeight: 8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 
