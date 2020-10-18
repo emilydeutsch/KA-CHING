@@ -31,7 +31,16 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
   //var money = widget.userSelection[0];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
+    return Scaffold(body:new Stack(
+        children: <Widget>[
+    Container(
+    decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("lib/images/CityPage.png"),
+      fit: BoxFit.cover,
+    ),
+    ),
+    ), Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -133,6 +142,8 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
           ),
         ],
       ),
+    ),
+          ],
     ),
     );
   }

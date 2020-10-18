@@ -12,21 +12,43 @@ class _LandingPageState extends State<LandingPage> {
   List<String> userSelection = new List(4);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+    return Scaffold(
+      body:new Stack(
             children: <Widget>[
-          Text("LandingPage"),
-          RaisedButton(
-            child:Text("next"),
-            onPressed: () {
-              Navigator.push(context,
-                  SlideRightRoute(page: JobPage(userSelection:this.userSelection)));
-            }
+              Container(
+    decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("lib/images/LandingPage.png"),
+          fit: BoxFit.cover,
           ),
-        ],
-      ),
+          ),
     ),
+          Center(
+          child: Column(
+                //mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 500.0, 0.0, 0.0),
+                  child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                      ),
+                    color: Color.fromRGBO(255, 210, 63, 1.0),
+                    child:Padding(
+                      padding: const EdgeInsets.fromLTRB(30.0,8.0,30.0,8.0),
+                      child: Text("Start", style: TextStyle(fontSize: 30, fontFamily: 'QuickSand',fontWeight: FontWeight.bold),),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          SlideRightRoute(page: JobPage(userSelection:this.userSelection)));
+                    }
+                  ),
+                ),
+              ],
+            ),
+          ),
+                ],
+      ),
     );
   }
 }

@@ -13,7 +13,16 @@ class _StartGamePageState extends State<StartGamePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
+    return Scaffold(body:new Stack(
+        children: <Widget>[
+    Container(
+    decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("lib/images/SummaryPage.png"),
+      fit: BoxFit.cover,
+    ),
+    ),
+    ), Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -27,8 +36,22 @@ class _StartGamePageState extends State<StartGamePage> {
                     SlideRightRoute(page: CityPage(userSelection:widget.userSelection)));
               }*/
           ),
+          RawMaterialButton(
+            onPressed: () {},
+            elevation: 5.0,
+            fillColor: Colors.white,
+            child: Icon(
+              Icons.play_arrow,
+              color: Colors.green,
+              size:160.0,
+            ),
+            //padding: EdgeInsets.all(15.0),
+            shape: CircleBorder(),
+          )
         ],
       ),
+    ),
+    ],
     ),
     );
   }
