@@ -54,11 +54,12 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal:50.0),
                     child: Text(
-                      'Here\'s your monthly income ?',
+                      'Here\'s your monthly income',
                       style: TextStyle(
                         fontFamily: 'QuickSand',
                         color: Colors.black87,
                         fontSize: 30,
+                        fontWeight: FontWeight.bold,
                         //fontWeight: FontWeight.w700,
                       ),
                       textAlign: TextAlign.left,
@@ -114,7 +115,7 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
                       ),
                     ),
                   ),
-                  TextButton(
+                  /*TextButton(
                     onPressed: (){},
                     child: Text(
                       'Go Back',
@@ -126,7 +127,7 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
                       ),
                     ),
                     //style: raisedButtonStyle2,
-                  ),
+                  ),*/
 
                 ]
             )

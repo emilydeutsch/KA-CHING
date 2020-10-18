@@ -28,7 +28,21 @@ class _CityPageState extends State<CityPage> {
         children: <Widget>[
           //Text("Your Job selected:"),
           //Text(widget.userSelection[0]),
-          Text("City"),
+          //Text("City"),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal:50.0),
+            child: Text(
+              'Where do you want to live?',
+              style: TextStyle(
+                fontFamily: 'QuickSand',
+                color: Colors.black87,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                //fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
           Container(
             //width: 300.0,
             //color: Colors.lightBlue,

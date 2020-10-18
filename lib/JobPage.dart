@@ -27,7 +27,21 @@ class _JobPageState extends State<JobPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-          Text("Job"),
+          //Text("Job"),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:50.0),
+                child: Text(
+                  'What do you want to be when you grow up?',
+                  style: TextStyle(
+                    fontFamily: 'QuickSand',
+                    color: Colors.black87,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    //fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              ),
           Container(
             //width: 300.0,
             //color: Colors.lightBlue,
