@@ -44,7 +44,6 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text("MonthlyIncome"),
           //Text("\$" + cost_map[widget.userSelection[0]][widget.userSelection[1]].toString()),
       Center(
         child: Container(
@@ -66,7 +65,7 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: ElevatedButton(
                       onPressed: (){},
                       child: Text(
@@ -91,9 +90,12 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top:10.0),
+                    padding: const EdgeInsets.only(top:60.0),
                     child: ElevatedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context,
+                            SlideRightRoute(page: RentPage(userSelection:widget.userSelection)));
+                      },
                       child: Text(
                         'Looks good!',
                         style: TextStyle(
@@ -134,13 +136,6 @@ class _MonthlyIncomePageState extends State<MonthlyIncomePage> {
 
         ),
       ),
-          RaisedButton(
-              child:Text("next"),
-              onPressed: () {
-                Navigator.push(context,
-                    SlideRightRoute(page: RentPage(userSelection:widget.userSelection)));
-              }
-          ),
         ],
       ),
     ),

@@ -62,13 +62,13 @@ class _MonthlyExpensesPageState extends State<MonthlyExpensesPage> {
                           fontFamily: 'QuickSand',
                           color: Colors.black87,
                           fontSize: 30,
-                          //fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.left,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text(
@@ -93,7 +93,7 @@ class _MonthlyExpensesPageState extends State<MonthlyExpensesPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.only(top: 60.0),
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(context,

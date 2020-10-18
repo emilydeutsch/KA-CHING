@@ -63,7 +63,10 @@ class _RentPageState extends State<RentPage> {
                                           userSelection: widget.userSelection))
                               );
                           },
-                          icon: FlutterLogo(),
+                          icon: SizedBox(
+                              width: 50,
+                              child: Image.asset("lib/images/one.png")
+                          ),
                           label: Text(
                             'One bedroom',
                             style: TextStyle(
@@ -87,7 +90,10 @@ class _RentPageState extends State<RentPage> {
                                         userSelection: widget.userSelection))
                             );
                           },
-                          icon: FlutterLogo(),
+                          icon: SizedBox(
+                            width: 50,
+                            child: Image.asset("lib/images/two.png")
+                            ),
                           label: Text(
                             'Two bedrooms',
                             style: TextStyle(
