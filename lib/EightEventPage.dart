@@ -40,14 +40,14 @@ String boldText = "You just lost \$" + 1000.toString() + ".";
     ),
     ),Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               height: 50
             ),
-            StatusBar(moneyScore, funScore),
+            StatusBar2(moneyScore, funScore),
             SizedBox(
-              height: 350
+              height: 335
             ),
             Container(
               width: 300,
@@ -187,4 +187,86 @@ class EventButton extends StatelessWidget{
   }  
 }
 
+class FunProgress extends StatelessWidget {
 
+  FunProgress(this.funscore);
+  double funscore;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Text(
+              "Fun",
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                color: Colors.black87,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),),
+          ),
+          SizedBox(
+            width: 100,
+            child: LinearProgressIndicator(
+              value: funscore,
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.amber),
+              backgroundColor: Colors.amberAccent[100],
+              minHeight: 8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class StatusBar2 extends StatelessWidget{
+
+  StatusBar2(this.moneyScore, this.funScore);
+
+  final int moneyScore;
+  final int funScore;
+
+
+
+  @override
+  Widget build(BuildContext context){
+    return Center(
+      child: (
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Container(child: Text(
+                      '\$ ' + moneyScore.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.black87,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(child: FunProgress(this.funScore/100.00)),
+                    ),
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ),
+              ]
+          )
+      ),
+    );
+  }
+}
