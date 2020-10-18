@@ -1,5 +1,6 @@
 # KA-CHING 
 ## A mobile game application that enables children to gain financial literacy, without all the jargon and nitty-gritty
+### Try it online: [ka-ching.tech](https://ka-ching.tech/)
 ## DubHacks 2020 Submission
 
 
