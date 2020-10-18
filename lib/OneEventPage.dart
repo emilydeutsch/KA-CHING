@@ -1,13 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:katching_app/LosePage.dart';
 import 'package:katching_app/TwoEventPage.dart';
 
 class OneEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
 
-  OneEventPage(this.moneyScore, this.funScore);
+  OneEventPage({this.moneyScore, this.funScore});
 
   @override
   _OneEventPageState createState() => _OneEventPageState();
@@ -20,8 +21,16 @@ class _OneEventPageState extends State<OneEventPage> {
       int funScore = widget.funScore;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+      body: new Stack(
+          children: <Widget>[
+      Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage("lib/images/EventPageOne.png"),
+            fit: BoxFit.cover,
+            ),
+        ),
+      ),Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -36,6 +45,8 @@ class _OneEventPageState extends State<OneEventPage> {
           ],
         )
       )
+    ],
+      ),
     );
   }
 }
@@ -111,16 +122,21 @@ class ActionButtons extends StatelessWidget{
         ),
         onPressed: (){
           //Event: brunch($20)
-          if(moneyScore > 0){
             moneyScore = moneyScore - 20;
-          }
           if(funScore < 100){
             funScore = funScore + 25;
           }
-          Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TwoEventPage(moneyScore, funScore)));
-          ///TODO: add logic if lost        
+          if(moneyScore<=0 || funScore<=0){
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
+          }
+          else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TwoEventPage(moneyScore, funScore)));
+          }
         }
       ),
         SizedBox(
@@ -142,13 +158,18 @@ class ActionButtons extends StatelessWidget{
         ),
         onPressed: (){
           //Event: brunch($20)
-          if(funScore > 0){
             funScore = funScore - 25;
-          }
-          Navigator.push(
+            if(moneyScore<=0 || funScore<=0){
+              Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => TwoEventPage(moneyScore, funScore)));
-          ///TODO: add logic if lost        
+                  MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
+            }
+            else {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TwoEventPage(moneyScore, funScore)));
+            }
         }
       )
       

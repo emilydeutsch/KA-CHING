@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:katching_app/LosePage.dart';
+import 'package:katching_app/WinPage.dart';
 
 
 class EightEventPage extends StatefulWidget {
@@ -21,7 +23,16 @@ class _EightEventPageState extends State<EightEventPage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: new Stack(
+          children: <Widget>[
+      Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+          image: AssetImage("lib/images/EventPageEight.png"),
+      fit: BoxFit.cover,
+    ),
+    ),
+    ),Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -36,6 +47,8 @@ class _EightEventPageState extends State<EightEventPage> {
           ],
         )
       )
+    ],
+      ),
     );
   }
 }
@@ -111,14 +124,18 @@ class EventButton extends StatelessWidget{
         ),
         onPressed: (){
           //Event: car issue($1000)
-          if(moneyScore > 0){
-            moneyScore = moneyScore - 1000;
+          moneyScore = moneyScore - 1000;
+          if(moneyScore<=0 || funScore<=0){
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
           }
-          
-          /* Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LostPage()));
-           *////TODO: add logic if lost        
+          else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WinPage()));
+          }
         }
       )
         )

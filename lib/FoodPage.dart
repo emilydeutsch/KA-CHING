@@ -40,7 +40,7 @@ class _FoodPageState extends State<FoodPage> {
                             fontFamily: 'QuickSand',
                             color: Colors.black87,
                             fontSize: 30,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,/**/
                           ),
                           textAlign: TextAlign.left,
                         ),

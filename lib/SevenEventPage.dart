@@ -20,8 +20,16 @@ class _SevenEventPageState extends State<SevenEventPage> {
       int funScore = widget.funScore;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+           body: new Stack(
+          children: <Widget>[
+      Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+          image: AssetImage("lib/images/EventPageSeven.png"),
+      fit: BoxFit.cover,
+    ),
+    ),
+    ),Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -36,6 +44,8 @@ class _SevenEventPageState extends State<SevenEventPage> {
           ],
         )
       )
+    ],
+      ),
     );
   }
 }
