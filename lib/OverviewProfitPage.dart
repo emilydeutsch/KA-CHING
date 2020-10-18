@@ -29,12 +29,40 @@ class _OverviewProfitPageState extends State<OverviewProfitPage> {
       'Kansas City': 4552,
     }
   };
+
+  static const Map expense1_map = {
+    'one': {
+      'Seattle': 1250,
+      'New York': 2550,
+      'Kansas City': 986,
+    },
+    'two': {
+      'Seattle': 2100,
+      'New York': 2900,
+      'Kansas City': 1180,
+    },
+  };
+
+  static const Map expense2_map = {
+    '1': 165,
+    '2': 345,
+    '3': 512,
+  };
   var colour_val = 800; // Used for the summary descriptions
-  var font_size_val = 16.0; // Used for the summary descriptions
+  var font_size_val = 18.0; // Used for the summary descriptions
   static const vertical_offset = 10.0;
-  static const horizontal_offset = 50.0;
+  static const horizontal_offset = 20.0;
+
   @override
   Widget build(BuildContext context) {
+    var occupation = widget.userSelection[0];
+    var city = widget.userSelection[1];
+    var income = cost_map[occupation][city];//.toString();
+    var living = widget.userSelection[2];
+    var living_cost = expense1_map[living][city];
+    var food = expense2_map[widget.userSelection[3]];
+    var expenses = (expense1_map[widget.userSelection[2]][widget.userSelection[1]]+expense2_map[widget.userSelection[3]]+1000);
+    var total = income - expenses;
     return Scaffold(body: new Stack(
         children: <Widget>[
     Container(
@@ -48,8 +76,7 @@ class _OverviewProfitPageState extends State<OverviewProfitPage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text("OverviewProfitPage"),
-
+          //Text("OverviewProfitPage"),
           Center(
             child: Container(
               //color: Colors.grey,
@@ -69,65 +96,267 @@ class _OverviewProfitPageState extends State<OverviewProfitPage> {
                           textAlign: TextAlign.left,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:horizontal_offset, vertical: vertical_offset),
-                        child: Text(
-                          'Occupation: ' + widget.userSelection[0],
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.grey[colour_val],
-                            fontSize: font_size_val,
-                            fontWeight: FontWeight.bold,
-                            //fontWeight: FontWeight.w700,
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal:horizontal_offset, vertical: vertical_offset),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Occupation: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'City: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'Monthly Income: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'Living Arrangements: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'Living Costs: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'Food: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'Other Costs: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+
+                              Text(""),
+                              Text(
+                                'Monthly Expenses: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(""),
+                              Text(
+                                'Money Left Over: ' ,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
                           ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:horizontal_offset, vertical: vertical_offset),
-                        child: Text(
-                          'City: ' + widget.userSelection[1],
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.grey[colour_val],
-                            fontSize: font_size_val,
-                            fontWeight: FontWeight.bold,
-                            //fontWeight: FontWeight.w700,
                           ),
-                          textAlign: TextAlign.left,
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal:horizontal_offset, vertical: vertical_offset),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              /*Occupation*/
+                              Text(
+                                occupation,//widget.userSelection[0],
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(""),
+                              /*City*/
+                              Text(
+                                widget.userSelection[1],
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(""),
+                              /*Monthly Income*/
+                              Text(
+                                "\$" + income.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),Text(""),
+                              /*Living Arrangements*/
+                              Text(
+                                living + " bedroom",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(""),
+                              /*Living Costs*/
+                              Text(
+                                "\$" + living_cost.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(""),
+                              /*Food*/
+                              Text(
+                                "\$" + food.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(""),
+                              /*Other Costs*/
+                              Text(
+                                "\$1000",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(""),
+                              /*Monthly Expenses*/
+                              Text(
+                                "\$" + expenses.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),Text(""),
+                              /*Money Leftover*/
+                              Text(
+                                "\$" + total.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.grey[colour_val],
+                                  fontSize: font_size_val,
+                                  fontWeight: FontWeight.bold,
+                                  //fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                            ],
+                          ),
+                          ),
+                        ],
                       ),
+
+
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        /*child: ElevatedButton(
-                          onPressed: (){},
-                          child: Text(
-                            "\$" + cost_map[widget.userSelection[0]][widget.userSelection[1]].toString(),
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            onPrimary: Color(0xff0EAD69),
-                            primary: Color(0xff0EAD69),
-                            minimumSize: Size(300, 80),
-                            padding: EdgeInsets.symmetric(horizontal: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              side: BorderSide(),
-                            ),
-                          ),
-                        ),*/
+
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top:10.0),
                         child: ElevatedButton(
-                          onPressed: (){},
+                          onPressed: () {
+                            Navigator.push(context,
+                                SlideRightRoute(page: StartGamePage(userSelection:widget.userSelection)));
+                          },
                           child: Text(
-                            'Looks good!',
+                            'Start!',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Colors.black87,
@@ -147,32 +376,20 @@ class _OverviewProfitPageState extends State<OverviewProfitPage> {
                           ),
                         ),
                       ),
-                      /*TextButton(
-                    onPressed: (){},
-                    child: Text(
-                      'Go Back',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        fontFamily: 'Poppins',
-                        color: Colors.black87,
-                        fontSize: 12,
-                      ),
-                    ),
-                    //style: raisedButtonStyle2,
-                  ),*/
 
                     ]
                 )
 
             ),
           ),
-          RaisedButton(
+
+          /*RaisedButton(
               child:Text("next"),
               onPressed: () {
                 Navigator.push(context,
                     SlideRightRoute(page: StartGamePage(userSelection:widget.userSelection)));
               }
-          ),
+          ),*/
         ],
       ),
     ),
