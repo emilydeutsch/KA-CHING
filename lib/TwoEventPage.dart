@@ -9,12 +9,14 @@ import 'LosePage.dart';
 class TwoEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+  final int salary;
+  final int expenses;
 
   String description = "Uh oh! You lost your wallet along with the cash that was inside.";
   String boldText = "You lost \$" + 200.toString() + ".";
 
 
-  TwoEventPage(this.moneyScore, this.funScore);
+  TwoEventPage(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   _TwoEventPageState createState() => _TwoEventPageState();
@@ -72,7 +74,7 @@ String boldText = "You lost \$" + 200.toString() + ".";
             SizedBox(
               height: 20
             ),
-            EventButton(moneyScore, funScore),
+            EventButton(moneyScore, funScore,widget.salary,widget.expenses),
             SizedBox(
               height: 50
             ),
@@ -141,8 +143,10 @@ class StatusBar extends StatelessWidget{
 class EventButton extends StatelessWidget{
   int moneyScore;
   int funScore;
+  final int salary;
+  final int expenses;
 
-  EventButton(this.moneyScore, this.funScore);
+  EventButton(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   Widget build(BuildContext context){
@@ -178,7 +182,7 @@ class EventButton extends StatelessWidget{
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ThreeEventPage(moneyScore, funScore)));
+                      builder: (context) => ThreeEventPage(moneyScore, funScore,salary,expenses)));
             }
         }
       )

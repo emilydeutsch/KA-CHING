@@ -9,8 +9,10 @@ import 'package:katching_app/LandingPage.dart';
 class EightEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+  final int salary;
+  final int expenses;
 
-  EightEventPage(this.moneyScore, this.funScore);
+  EightEventPage(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   _EightEventPageState createState() => _EightEventPageState();

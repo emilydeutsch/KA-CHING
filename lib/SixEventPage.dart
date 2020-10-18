@@ -9,8 +9,10 @@ import 'LosePage.dart';
 class SixEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+  final int salary;
+  final int expenses;
 
-  SixEventPage(this.moneyScore, this.funScore);
+  SixEventPage(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   _SixEventPageState createState() => _SixEventPageState();
@@ -68,7 +70,7 @@ String boldText = "You would spend \$" + 30.toString() + ".";
             SizedBox(
               height: 20
             ),
-            ActionButtons(moneyScore, funScore),
+            ActionButtons(moneyScore, funScore,widget.salary,widget.expenses),
             SizedBox(
               height: 50
             ),
@@ -137,8 +139,10 @@ class StatusBar extends StatelessWidget{
 class ActionButtons extends StatelessWidget{
   int moneyScore;
   int funScore;
+  final int salary;
+  final int expenses;
 
-  ActionButtons(this.moneyScore, this.funScore);
+  ActionButtons(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   Widget build(BuildContext context){
@@ -180,7 +184,7 @@ class ActionButtons extends StatelessWidget{
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SevenEventPage(moneyScore, funScore)));
+                    builder: (context) => SevenEventPage(moneyScore, funScore,salary,expenses)));
           }
         }
       )
@@ -217,7 +221,7 @@ class ActionButtons extends StatelessWidget{
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SevenEventPage(moneyScore, funScore)));
+                    builder: (context) => SevenEventPage(moneyScore, funScore,salary,expenses)));
           }
         }
       )

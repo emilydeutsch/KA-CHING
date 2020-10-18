@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:katching_app/MonthOnePage.dart';
 import 'package:katching_app/SlideTransition.dart';
 
 import 'StartGamePage.dart';
@@ -353,7 +354,7 @@ class _OverviewProfitPageState extends State<OverviewProfitPage> {
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(context,
-                                SlideRightRoute(page: StartGamePage(userSelection:widget.userSelection)));
+                                SlideRightRoute(page: OneMonthPage(Salary:income,Expenses: expenses,)));
                           },
                           child: Text(
                             'Start!',

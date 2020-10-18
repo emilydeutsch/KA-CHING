@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:katching_app/OneEventPage.dart';
+import 'package:katching_app/MonthOnePage.dart';
 
 import 'CityPage.dart';
 import 'SlideTransition.dart';
@@ -33,7 +33,7 @@ class _StartGamePageState extends State<StartGamePage> {
           RawMaterialButton(
             onPressed: () {
               Navigator.push(context,
-               SlideRightRoute(page: OneEventPage(moneyScore:500, funScore:50)));
+               SlideRightRoute(page:OneMonthPage(Salary:500, Expenses:50)));
                 },
             elevation: 5.0,
             fillColor: Colors.white,

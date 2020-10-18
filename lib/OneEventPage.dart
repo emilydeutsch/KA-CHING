@@ -8,8 +8,10 @@ import 'package:katching_app/LandingPage.dart';
 class OneEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+  final int salary;
+  final int expenses;
 
-  OneEventPage({this.moneyScore, this.funScore});
+  OneEventPage({this.moneyScore, this.funScore,this.salary,this.expenses});
 
   @override
   _OneEventPageState createState() => _OneEventPageState();
@@ -20,6 +22,7 @@ class _OneEventPageState extends State<OneEventPage> {
   Widget build(BuildContext context) {
       int moneyScore = widget.moneyScore;
       int funScore = widget.funScore;
+
 
       String description = "You landed a new job and moved into your new apartment. Would you like to celebrate with friends at brunch?";
       String boldText = "You would spend \$" + 20.toString() + ".";
@@ -67,7 +70,7 @@ class _OneEventPageState extends State<OneEventPage> {
             SizedBox(
               height: 20
             ),
-            ActionButtons(moneyScore, funScore),
+            ActionButtons(moneyScore, funScore,widget.salary,widget.expenses),
             SizedBox(
               height: 50
             ),
@@ -136,8 +139,10 @@ class StatusBar extends StatelessWidget{
 class ActionButtons extends StatelessWidget{
   int moneyScore;
   int funScore;
+  final int salary;
+  final int expenses;
 
-  ActionButtons(this.moneyScore, this.funScore);
+  ActionButtons(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   Widget build(BuildContext context){
@@ -179,7 +184,7 @@ class ActionButtons extends StatelessWidget{
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => TwoEventPage(moneyScore, funScore)));
+                    builder: (context) => TwoEventPage(moneyScore, funScore,salary,expenses)));
           }
         }
       )
@@ -216,7 +221,7 @@ class ActionButtons extends StatelessWidget{
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => TwoEventPage(moneyScore, funScore)));
+                      builder: (context) => TwoEventPage(moneyScore, funScore,salary,expenses)));
             }
         }
       )

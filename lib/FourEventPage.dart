@@ -3,14 +3,18 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:katching_app/FiveEventPage.dart';
 import 'package:katching_app/LandingPage.dart';
+import 'package:katching_app/MonthTwoPage.dart';
+import 'package:katching_app/SlideTransition.dart';
 
 import 'LosePage.dart';
 
 class FourEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+  final int salary;
+  final int expenses;
 
-  FourEventPage(this.moneyScore, this.funScore);
+  FourEventPage(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   _FourEventPageState createState() => _FourEventPageState();
@@ -69,7 +73,7 @@ String boldText = "You would spend \$" + 700.toString() + ".";
             SizedBox(
               height: 20
             ),
-            ActionButtons(moneyScore, funScore),
+            ActionButtons(moneyScore, funScore,widget.salary,widget.expenses),
             SizedBox(
               height: 50
             ),
@@ -138,8 +142,10 @@ class StatusBar extends StatelessWidget{
 class ActionButtons extends StatelessWidget{
   int moneyScore;
   int funScore;
+  final int salary;
+  final int expenses;
 
-  ActionButtons(this.moneyScore, this.funScore);
+  ActionButtons(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   Widget build(BuildContext context){
@@ -178,11 +184,9 @@ class ActionButtons extends StatelessWidget{
                 MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
           }
           else {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => FiveEventPage(moneyScore, funScore)));
-          }
+            Navigator.push(context,
+                SlideRightRoute(page:TwoMonthPage(moneyScore:moneyScore, funScore:funScore,salary: salary,expenses: expenses)));
+        }
         }
       )
         ),
@@ -215,10 +219,8 @@ class ActionButtons extends StatelessWidget{
                 MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
           }
           else {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => FiveEventPage(moneyScore, funScore)));
+            Navigator.push(context,
+                SlideRightRoute(page:TwoMonthPage(moneyScore:moneyScore, funScore:funScore,salary: salary,expenses: expenses)));
           }
         }
       )

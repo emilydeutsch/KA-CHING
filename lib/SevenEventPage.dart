@@ -7,8 +7,10 @@ import 'package:katching_app/LandingPage.dart';
 class SevenEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+  final int salary;
+  final int expenses;
 
-  SevenEventPage(this.moneyScore, this.funScore);
+  SevenEventPage(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   _SevenEventPageState createState() => _SevenEventPageState();
@@ -66,7 +68,7 @@ String boldText = "You just got \$" + 200.toString() + ".";
             SizedBox(
               height: 20
             ),
-            EventButton(moneyScore, funScore),
+            EventButton(moneyScore, funScore,widget.salary,widget.expenses),
              SizedBox(
               height: 50
             ),
@@ -135,8 +137,10 @@ class StatusBar extends StatelessWidget{
 class EventButton extends StatelessWidget{
   int moneyScore;
   int funScore;
+  final int salary;
+  final int expenses;
 
-  EventButton(this.moneyScore, this.funScore);
+  EventButton(this.moneyScore, this.funScore,this.salary,this.expenses);
 
   @override
   Widget build(BuildContext context){
@@ -166,7 +170,7 @@ class EventButton extends StatelessWidget{
           
           Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EightEventPage(moneyScore, funScore)));
+                  MaterialPageRoute(builder: (context) => EightEventPage(moneyScore, funScore,salary,expenses)));
         }
       )
         )
