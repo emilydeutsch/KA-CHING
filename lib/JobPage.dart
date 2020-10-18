@@ -175,7 +175,7 @@ class _JobPageState extends State<JobPage> {
                               padding: const EdgeInsets.only(left: 20),
                               child: SizedBox(
                                   width: 50,
-                                  child: Image.asset("lib/images/doctor.png")
+                                  child: Image.asset("lib/images/newyork.png")
                               ),
                             ),
                             Padding(
