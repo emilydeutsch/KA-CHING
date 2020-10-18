@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:katching_app/SixEventPage.dart';
 
+import 'LosePage.dart';
+
 class FiveEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
@@ -20,8 +22,16 @@ class _FiveEventPageState extends State<FiveEventPage> {
       int funScore = widget.funScore;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+      body: new Stack(
+          children: <Widget>[
+      Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+          image: AssetImage("lib/images/EventPageFive.png"),
+      fit: BoxFit.cover,
+    ),
+    ),
+    ),Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -36,6 +46,8 @@ class _FiveEventPageState extends State<FiveEventPage> {
           ],
         )
       )
+    ],
+      ),
     );
   }
 }
@@ -111,16 +123,21 @@ class ActionButtons extends StatelessWidget{
         ),
         onPressed: (){
           //Event: video game($70)
-          if(moneyScore > 0){
-            moneyScore = moneyScore - 70;
-          }
+          moneyScore = moneyScore - 70;
           if(funScore < 100){
             funScore = funScore + 25;
           }
-          Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SixEventPage(moneyScore, funScore)));
-          ///TODO: add logic if lost        
+          if(moneyScore<=0 || funScore<=0){
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
+          }
+          else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SixEventPage(moneyScore, funScore)));
+          }
         }
       ),
         SizedBox(
@@ -142,13 +159,18 @@ class ActionButtons extends StatelessWidget{
         ),
         onPressed: (){
           //Event: video games($70)
-          if(funScore > 0){
-            funScore = funScore - 25;
+          funScore = funScore - 25;
+          if(moneyScore<=0 || funScore<=0){
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LosePage(moneyScore<=0)));
           }
-          Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SixEventPage(moneyScore, funScore)));
-          ///TODO: add logic if lost        
+          else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SixEventPage(moneyScore, funScore)));
+          }
         }
       )
       

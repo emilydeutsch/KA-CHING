@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:katching_app/OneEventPage.dart';
+
+import 'CityPage.dart';
+import 'SlideTransition.dart';
 
 
 // ignore: must_be_immutable
@@ -10,7 +14,6 @@ class StartGamePage extends StatefulWidget {
 }
 
 class _StartGamePageState extends State<StartGamePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(body:new Stack(
@@ -27,17 +30,11 @@ class _StartGamePageState extends State<StartGamePage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text("StartGame"),
-          RaisedButton(
-              child:Text("Start"),
-              /* //future implementation
-              onPressed: () {
-                Navigator.push(context,
-
-                    SlideRightRoute(page: CityPage(userSelection:widget.userSelection)));
-              }*/
-          ),
           RawMaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+               SlideRightRoute(page: OneEventPage(moneyScore:500, funScore:50)));
+                },
             elevation: 5.0,
             fillColor: Colors.white,
             child: Icon(
