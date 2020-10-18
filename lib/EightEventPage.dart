@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:katching_app/LosePage.dart';
 import 'package:katching_app/WinPage.dart';
+import 'package:katching_app/LandingPage.dart';
 
 
 class EightEventPage extends StatefulWidget {
@@ -21,6 +22,9 @@ class _EightEventPageState extends State<EightEventPage> {
       int moneyScore = widget.moneyScore;
       int funScore = widget.funScore;
 
+      String description = "You got into a car accident! You’ll have to pay some unexpectated medical bills.";
+String boldText = "You just lost \$" + 1000.toString() + ".";
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: new Stack(
@@ -34,16 +38,52 @@ class _EightEventPageState extends State<EightEventPage> {
     ),
     ),Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 45
+              height: 50
             ),
             StatusBar(moneyScore, funScore),
             SizedBox(
               height: 350
             ),
-            EventButton(moneyScore, funScore)
+            Container(
+              width: 300,
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontSize: 18.0
+                )
+              )
+            ),
+            Container(
+              width: 300,
+              child: Text(
+                boldText,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold
+                )
+              )
+            ),
+            SizedBox(
+              height: 20
+            ),
+            EventButton(moneyScore, funScore),
+            SizedBox(
+              height: 50
+            ),
+            Container(
+              child: InkWell(
+                child: Text("Quit"),
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LandingPage()));
+                },
+              )
+            )
           ],
         )
       )
@@ -77,7 +117,7 @@ class StatusBar extends StatelessWidget{
             labelPadding: EdgeInsets.all(2.0),
           ),
         SizedBox(
-          height: 15.0
+          height: 5
         ),
         Chip(
             backgroundColor: Colors.orange,
@@ -110,10 +150,11 @@ class EventButton extends StatelessWidget{
           minWidth: 200,
         height: 50,
           child:FlatButton(
-        color: Colors.white,
+       color: Color(0xff41c8ab),
+        textColor: Colors.black,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          side: BorderSide(color: Colors.black)
+          borderRadius: BorderRadius.circular(25.0),
+          side: BorderSide(color: Color(0xff41c8ab))
         ),
         padding: EdgeInsets.all(8.0),
         child: Text(

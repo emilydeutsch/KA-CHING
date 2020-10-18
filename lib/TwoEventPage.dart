@@ -2,12 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:katching_app/ThreeEventPage.dart';
+import 'package:katching_app/LandingPage.dart';
 
 import 'LosePage.dart';
 
 class TwoEventPage extends StatefulWidget {
   final int moneyScore;
   final int funScore;
+
+  String description = "Uh oh! You lost your wallet along with the cash that was inside.";
+  String boldText = "You lost \$" + 200.toString() + ".";
+
 
   TwoEventPage(this.moneyScore, this.funScore);
 
@@ -21,6 +26,10 @@ class _TwoEventPageState extends State<TwoEventPage> {
       int moneyScore = widget.moneyScore;
       int funScore = widget.funScore;
 
+      String description = "Uh oh! You lost your wallet along with the cash that was inside.";
+String boldText = "You lost \$" + 200.toString() + ".";
+
+
     return Scaffold(
       body:new Stack(
           children: <Widget>[
@@ -33,16 +42,51 @@ class _TwoEventPageState extends State<TwoEventPage> {
     ),
     ), Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 45
+              height: 50
             ),
-            StatusBar(moneyScore, funScore),
-            SizedBox(
+            StatusBar(moneyScore, funScore),SizedBox(
               height: 350
             ),
-            EventButton(moneyScore, funScore)
+            Container(
+              width: 300,
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontSize: 18.0
+                )
+              )
+            ),
+            Container(
+              width: 300,
+              child: Text(
+                boldText,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold
+                )
+              )
+            ),
+            SizedBox(
+              height: 20
+            ),
+            EventButton(moneyScore, funScore),
+            SizedBox(
+              height: 50
+            ),
+            Container(
+              child: InkWell(
+                child: Text("Quit"),
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LandingPage()));
+                },
+              )
+            )
           ],
         )
       )
@@ -76,7 +120,7 @@ class StatusBar extends StatelessWidget{
             labelPadding: EdgeInsets.all(2.0),
           ),
         SizedBox(
-          height: 15.0
+          height: 5
         ),
         Chip(
             backgroundColor: Colors.orange,
@@ -109,10 +153,11 @@ class EventButton extends StatelessWidget{
           minWidth: 200,
         height: 50,
           child:FlatButton(
-        color: Colors.white,
+        color: Color(0xff41c8ab),
+        textColor: Colors.black,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          side: BorderSide(color: Colors.black)
+          borderRadius: BorderRadius.circular(25.0),
+          side: BorderSide(color: Color(0xff41c8ab))
         ),
         padding: EdgeInsets.all(8.0),
         child: Text(
